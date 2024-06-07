@@ -9,3 +9,11 @@ def students(request):
     'mystudents': mystudents,
   }
   return HttpResponse(template.render(context, request))
+
+def details(request, id):
+  mystudent = Student.objects.get(id=id)
+  template = loader.get_template('details.html')
+  context = {
+    'mystudent': mystudent,
+  }
+  return HttpResponse(template.render(context, request))
